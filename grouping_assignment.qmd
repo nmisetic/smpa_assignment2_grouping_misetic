@@ -171,9 +171,14 @@ Who are the top 5 individuals (vs. organization) were paid by the campaign commi
 
 ```{r}
 
+payments %>% 
+  filter(entity_type=="IND") %>% 
+  group_by(recipient_name) %>%
+  arrange(recipient_name) %>% 
+  summarize(tot_money = sum(disbursement_amount)) %>%
+  arrange(desc(tot_money))
 
-
-
+# I used the code from Question 6, but filtered for individuals instead of for legal consulting. Using this function, I found the top 5 individuals to be Michael Glassner, Sean Dollman, Darren Centinello, Christopher Carr, and John Pence
 
 
 
