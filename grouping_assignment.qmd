@@ -134,20 +134,23 @@ payments %>%
   summarize(tot_money = sum(disbursement_amount)) %>%
   arrange(desc(tot_money))
   
-# I filtered the dataset for "AMMC, LLC", then grouped all the data entries by disbursmeent descriptions and had the data summarized. AMMC LLC was paid most for "Placed Media."
+# I filtered the data set for "AMMC, LLC", then grouped all the data entries by disbursement descriptions and had the data summarized. AMMC LLC was paid most for "Placed Media."
 
 ```
 
 What's the most common category overall (see "disbursement_description") the campaign spent money on?
 
 ```{r}
+payments %>% 
+  group_by(disbursement_description) %>% 
+  summarize(category = frequency(disbursement_description))
 
 payments %>% 
   group_by(disbursement_description) %>% 
   summarize(tot_money = sum(disbursement_amount)) %>%
   arrange(desc(tot_money))
 
-#A problem has arisen with the titles- since titles that share a category don't share an exact name, R cannot put them together. Taking a glance at the data, it appears that, by frequency of payments Amex payments for travel are the most common. By total money spent, then the highest category would be digital consulting/online advertising.
+# A problem has arisen with the titles- since titles that share a category don't share an exact name, R cannot put them together. Taking a glance at the data, it appears that, by frequency of payments Amex payments for travel are the most common. By total money spent, then the highest category would be digital consulting/online advertising.
 
 ```
 
