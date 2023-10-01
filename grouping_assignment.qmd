@@ -142,10 +142,11 @@ What's the most common category overall (see "disbursement_description") the cam
 
 ```{r}
 
+payments %>% 
+  group_by(disbursement_description) %>% 
+  summarize(category = frequency(disbursement_description))
 
-
-
-
+#A problem has arisen with the titles- since titles that share a category don't share an exact name, R cannot put them together. Taking a glance at the data, it appears that Amex payments for travel are the most common
 
 ```
 
