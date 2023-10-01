@@ -158,7 +158,6 @@ Who were the 5 biggest recipients of campaign spending on "LEGAL CONSULTING"..?
 payments %>% 
   filter(disbursement_description=="LEGAL CONSULTING") %>% 
   group_by(recipient_name) %>%
-  arrange(recipient_name) %>% 
   summarize(tot_money = sum(disbursement_amount)) %>%
   arrange(desc(tot_money))
 
@@ -174,13 +173,10 @@ Who are the top 5 individuals (vs. organization) were paid by the campaign commi
 payments %>% 
   filter(entity_type=="IND") %>% 
   group_by(recipient_name) %>%
-  arrange(recipient_name) %>% 
   summarize(tot_money = sum(disbursement_amount)) %>%
   arrange(desc(tot_money))
 
 # I used the code from Question 6, but filtered for individuals instead of for legal consulting. Using this function, I found the top 5 individuals to be Michael Glassner, Sean Dollman, Darren Centinello, Christopher Carr, and John Pence
-
-
 
 ```
 
@@ -189,9 +185,13 @@ For the indvidual who was paid the most, which payment category (disbursement_de
 
 ```{r}
 
+payments %>% 
+  filter(recipient_name=="GLASSNER, MICHAEL") %>% 
+  group_by(disbursement_description) %>%
+  summarize(tot_money = sum(disbursement_amount)) %>%
+  arrange(desc(tot_money))
 
-
-
+# I used the code from Question 7, filtering for Michael Glassner specifically. The data suggests that he was paid most for being on payroll, being paid $499k.
 
 
 
