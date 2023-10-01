@@ -93,9 +93,20 @@ Tally the total overall disbursement amounts for each month (distinguishing betw
 
 ```{r}
 
+payments %>% 
+  filter(disbursement_year==2017) %>% 
+  group_by(disbursement_month) %>% 
+  summarize(tot_money = sum(disbursement_amount))
 
+payments %>% 
+  filter(disbursement_year==2018) %>% 
+  group_by(disbursement_month) %>% 
+  summarize(tot_money = sum(disbursement_amount))
+  
 
+# I could not find anything in the dataset for the year 2019, so I used the years 2017 and 2018
 
+# I ran two different programs in order to distinguish between years. From the two tables, we can conclude that October 2018 was the highest spending month.
 
 
 ```
