@@ -144,9 +144,10 @@ What's the most common category overall (see "disbursement_description") the cam
 
 payments %>% 
   group_by(disbursement_description) %>% 
-  summarize(category = frequency(disbursement_description))
+  summarize(tot_money = sum(disbursement_amount)) %>%
+  arrange(desc(tot_money))
 
-#A problem has arisen with the titles- since titles that share a category don't share an exact name, R cannot put them together. Taking a glance at the data, it appears that Amex payments for travel are the most common
+#A problem has arisen with the titles- since titles that share a category don't share an exact name, R cannot put them together. Taking a glance at the data, it appears that, by frequency of payments Amex payments for travel are the most common. By total money spent, then the highest category would be digital consulting/online advertising.
 
 ```
 
@@ -154,11 +155,14 @@ Who were the 5 biggest recipients of campaign spending on "LEGAL CONSULTING"..?
 
 ```{r}
 
+payments %>% 
+  filter(disbursement_description=="LEGAL CONSULTING") %>% 
+  group_by(recipient_name) %>%
+  arrange(recipient_name) %>% 
+  summarize(tot_money = sum(disbursement_amount)) %>%
+  arrange(desc(tot_money))
 
-
-
-
-
+# I filtered the data for legal consulting, grouped and summarized it by recipient names, and then arranged the data. We can say the biggest 5 recipients were Jones Day, Larocca, Kasowitz, Alan S. Futerfas, and Mcdermott.
 
 ```
 
