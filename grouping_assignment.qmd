@@ -115,11 +115,12 @@ Which recipient (recipient_name) was paid the most in the 2020 election cycle?
 
 ```{r}
 
+payments %>% 
+  group_by(recipient_name) %>% 
+  summarize(tot_money = sum(disbursement_amount)) %>%
+  arrange(desc(tot_money))
 
-
-
-
-
+# In this code I grouped the data by recipient name, had the data coalesced, and finally had the data arranged to easily show the most paied recipient. As a result, we can see that American Made Media Consultants LLC is the highest recipient.
 
 ```
 
