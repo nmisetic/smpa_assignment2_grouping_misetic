@@ -61,11 +61,11 @@ Take a moment to look at the various categories included for each disbursement.
 
 Without doing any analysis yet, what are three questions you might try to answer using this dataset? Write your narrative answers in the spaces below.
 
-1.  
+1.  Which groups did the Trump campaign give most of their money too?
 
-2.  
+2.  What is the correlation between specific election cycle and amount of money given?
 
-3.  
+3.  Which cities received the most money?
 
 ## Coding Assignment Questions
 
