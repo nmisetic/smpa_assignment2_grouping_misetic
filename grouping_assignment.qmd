@@ -81,11 +81,11 @@ How much was spent in the 2017 vs. 2018 reporting year?
 
 ```{r}
 
-
-
-
-
-
+payments %>%
+  group_by(report_year) %>% 
+  summarize(tot_money = sum(disbursement_amount))
+  
+# I grouped the data by the reporting years (2017 and 2018), then summarized the data by the total money spent each year. From the chart, we can see that more money we spent in 2018 than 2017
 
 ```
 
