@@ -128,10 +128,13 @@ Look at what this recipient was paid for. What service or good (see the "disburs
 
 ```{r}
 
-
-
-
-
+payments %>% 
+  filter(recipient_name=="AMERICAN MADE MEDIA CONSULTANTS, LLC") %>% 
+  group_by(disbursement_description) %>% 
+  summarize(tot_money = sum(disbursement_amount)) %>%
+  arrange(desc(tot_money))
+  
+# I filtered the dataset for "AMMC, LLC", then grouped all the data entries by disbursmeent descriptions and had the data summarized. AMMC LLC was paid most for "Placed Media."
 
 ```
 
